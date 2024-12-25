@@ -5,4 +5,6 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://audreyfeldroy.github.io',
                 'git_url': 'https://github.com/audreyfeldroy/deckthehalls',
                 'lib_path': 'deckthehalls'},
-  'syms': {'deckthehalls.core': {'deckthehalls.core.foo': ('core.html#foo', 'deckthehalls/core.py')}}}
+  'syms': { 'deckthehalls.core': { 'deckthehalls.core.colorize': ('core.html#colorize', 'deckthehalls/core.py'),
+                                   'deckthehalls.core.colorized_cells': ('core.html#colorized_cells', 'deckthehalls/core.py'),
+                                   'deckthehalls.core.index': ('core.html#index', 'deckthehalls/core.py')}}}
