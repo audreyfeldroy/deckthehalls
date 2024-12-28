@@ -1,0 +1,152 @@
+[
+  {
+    "objectID": "deck-the-halls.html",
+    "href": "deck-the-halls.html",
+    "title": "Deck the Halls",
+    "section": "",
+    "text": "from fastcore.all import *\n\n\nx = \"Deck the halls with boughs of holly\"\nx\n\n'Deck the halls with boughs of holly'\n\n\n\nL(\"la\")*8\n\n(#8) ['la','la','la','la','la','la','la','la']\n\n\n\ndef sing(): return L(\"Fa\", *L(\"la\")*8)\n\n\nsing()\n\n(#9) ['Fa','la','la','la','la','la','la','la','la']\n\n\n\nprint(\"Tis the season to be jolly\")\n\nTis the season to be jolly\n\n\n\n\" \".join(sing())\n\n'Fa la la la la la la la la'\n\n\n\nrepr(\"Don we now our gay apparel\")\n\n\"'Don we now our gay apparel'\"\n\n\n\ns = sing()\ns\n\n(#9) ['Fa','la','la','la','la','la','la','la','la']\n\n\n\n\"\".join(s[0:3])\n\n'Falala'\n\n\n\nfor i in range(0,3): print(\"\".join(s[i:i+3]))\n\nFalala\nlalala\nlalala\n\n\n\n\"Troll the ancient yuletide carol\"\n\n'Troll the ancient yuletide carol'\n\n\n\nL(zip(s[0:5], s[1:5])) + 'la'\n\n(#5) [('Fa', 'la'),('la', 'la'),('la', 'la'),('la', 'la'),'la']",
+    "crumbs": [
+      "Deck the Halls"
+    ]
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "print(pygstyles)\n\n['abap', 'algol', 'algol_nu', 'arduino', 'autumn', 'bw', 'borland', 'coffee', 'colorful', 'default', 'dracula', 'emacs', 'friendly_grayscale', 'friendly', 'fruity', 'github-dark', 'gruvbox-dark', 'gruvbox-light', 'igor', 'inkpot', 'lightbulb', 'lilypond', 'lovelace', 'manni', 'material', 'monokai', 'murphy', 'native', 'nord-darker', 'nord', 'one-dark', 'paraiso-dark', 'paraiso-light', 'pastie', 'perldoc', 'rainbow_dash', 'rrt', 'sas', 'solarized-dark', 'solarized-light', 'staroffice', 'stata-dark', 'stata-light', 'tango', 'trac', 'vim', 'vs', 'xcode', 'zenburn']",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#get-all-pygments-styles",
+    "href": "core.html#get-all-pygments-styles",
+    "title": "core",
+    "section": "",
+    "text": "print(pygstyles)\n\n['abap', 'algol', 'algol_nu', 'arduino', 'autumn', 'bw', 'borland', 'coffee', 'colorful', 'default', 'dracula', 'emacs', 'friendly_grayscale', 'friendly', 'fruity', 'github-dark', 'gruvbox-dark', 'gruvbox-light', 'igor', 'inkpot', 'lightbulb', 'lilypond', 'lovelace', 'manni', 'material', 'monokai', 'murphy', 'native', 'nord-darker', 'nord', 'one-dark', 'paraiso-dark', 'paraiso-light', 'pastie', 'perldoc', 'rainbow_dash', 'rrt', 'sas', 'solarized-dark', 'solarized-light', 'staroffice', 'stata-dark', 'stata-light', 'tango', 'trac', 'vim', 'vs', 'xcode', 'zenburn']",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#from-python-to-pygments-highlighted-fasttag",
+    "href": "core.html#from-python-to-pygments-highlighted-fasttag",
+    "title": "core",
+    "section": "From Python to Pygments-Highlighted FastTag",
+    "text": "From Python to Pygments-Highlighted FastTag\nTo display Python code in a FastHTML app with Pygments formatting, I made this FastTag:\n\nsource\n\nPythonToPygmentsFT\n\n PythonToPygmentsFT (c, style='rrt')\n\nTurns Python code into a Pygments syntax-highlighted FastTag\nIt includes the Pygments Python CSS for the style, scoped to a CSS class name that is the style name. That allows you to use it multiple times with different styles in the same page or notebook. See my Scoped Syntax Highlighting blog post for details.\n\n\nExamples\nHere are a couple FTs created with it. To show a FT in a Jupyter notebook, I use fasthtml.components.show:\n\npft = PythonToPygmentsFT('print(\"Hi Uma\")')\nshow(pft)\n\n\n  \nprint(\"Hi Uma\")\n\n\n\n\n\n\npft = PythonToPygmentsFT(getsource(PythonToPygmentsFT), style=\"monokai\")\nshow(pft)\n\n\n  \ndef PythonToPygmentsFT(c, style='rrt'):\n    \"Turns Python code into a Pygments syntax-highlighted FastTag\"\n    fm = HtmlFormatter(style=style, cssclass=style)\n    h = highlight(c, PythonLexer(), fm)\n    sd = fm.get_style_defs(f\".{style}\")\n    return Div(Style(sd), NotStr(h), id=style)",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#highlight-a-selected-notebook-cell",
+    "href": "core.html#highlight-a-selected-notebook-cell",
+    "title": "core",
+    "section": "Highlight a Selected Notebook Cell",
+    "text": "Highlight a Selected Notebook Cell\nLet’s highlight a cell of this notebook.\n\nnb = read_nb(Path(\"00_core.ipynb\"))\nc = nb.cells[5]\nc\n\n{ 'cell_type': 'code',\n  'execution_count': None,\n  'idx_': 5,\n  'metadata': {},\n  'outputs': [],\n  'source': '#| export\\npygstyles = L(pygments.styles.get_all_styles())'}\n\n\n\nshow(PythonToPygmentsFT(c.source, style='dracula'))\n\n\n  \n#| export\npygstyles = L(pygments.styles.get_all_styles())",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#get-code-cells-of-a-notebook",
+    "href": "core.html#get-code-cells-of-a-notebook",
+    "title": "core",
+    "section": "Get Code Cells of a Notebook",
+    "text": "Get Code Cells of a Notebook\nThis section is all about throwing away non-code cells.\n\nImagine those elves from Advent of Code doing whatever they want to a notebook\n\n\nsource\n\nis_code_cell\n\n is_code_cell (c)\n\n\nL(nb.cells).filter(is_code_cell).itemgot('source')[:2]\n\n(#2) ['#| default_exp core','#| hide\\nfrom nbdev.showdoc import *']\n\n\n\nsource\n\n\nget_code_cells\n\n get_code_cells (nb)\n\n\nget_code_cells(nb)\n\n(#27) ['#| default_exp core','#| hide\\nfrom nbdev.showdoc import *','#| export\\nfrom execnb.nbio import *\\nfrom fastcore.all import *\\nfrom fasthtml.common import *\\nfrom fasthtml.components import show\\nfrom fasthtml.jupyter import *\\nfrom inspect import getsource\\nfrom IPython.display import display, HTML, IFrame\\nfrom pathlib import Path\\nimport pygments\\nfrom pygments import highlight\\nfrom pygments.lexers import PythonLexer\\nfrom pygments.formatters import HtmlFormatter\\nfrom random import choice','#| export\\npygstyles = L(pygments.styles.get_all_styles())','print(pygstyles)','#| export\\ndef PythonToPygmentsFT(c, style=\\'rrt\\'):\\n    \"Turns Python code into a Pygments syntax-highlighted FastTag\"\\n    fm = HtmlFormatter(style=style, cssclass=style)\\n    h = highlight(c, PythonLexer(), fm)\\n    sd = fm.get_style_defs(f\".{style}\")\\n    return Div(Style(sd), NotStr(h), id=style)','pft = PythonToPygmentsFT(\\'print(\"Hi Uma\")\\')\\nshow(pft)','pft = PythonToPygmentsFT(getsource(PythonToPygmentsFT), style=\"monokai\")\\nshow(pft)','nb = read_nb(Path(\"00_core.ipynb\"))\\nc = nb.cells[5]\\nc',\"show(PythonToPygmentsFT(c.source, style='dracula'))\",\"#| export\\ndef is_code_cell(c): return c.cell_type == 'code'\",\"L(nb.cells).filter(is_code_cell).itemgot('source')[:2]\",\"#| export\\ndef get_code_cells(nb): return L(nb.cells).filter(is_code_cell).itemgot('source')\",'get_code_cells(nb)','#| export\\ndef NotebookToPygmentsFT(nb, style=\\'rrt\\'):\\n    \"Warning: This gets only code cells, without their output or any other cells\"\\n    cells = get_code_cells(nb)\\n    return cells.map(partial(PythonToPygmentsFT, style=style))','# show(Div(*NotebookToPygmentsFT(nb)))','#| export\\ndef PythonToRandomPygmentsFT(c,print_style=True): \\n    style = choice(pygstyles)\\n    result = PythonToPygmentsFT(c, style=style)\\n    if print_style:\\n        result = Div(f\"Pygments style: {style}\", result)\\n    return result','pft = PythonToRandomPygmentsFT(\\'print(\"Hi Uma\")\\', print_style=False)\\nshow(pft)','pft = PythonToRandomPygmentsFT(\\'print(\"Hi Uma\")\\', print_style=True)\\nshow(pft)','#| export\\ndef NotebookToRandomPygmentsFT(nb):\\n    \"Warning: This gets only code cells, without their output or any other cells\"\\n    cells = get_code_cells(nb)\\n    return cells.map(PythonToRandomPygmentsFT)'...]",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#highlight-code-cells-of-a-notebook",
+    "href": "core.html#highlight-code-cells-of-a-notebook",
+    "title": "core",
+    "section": "Highlight Code Cells of a Notebook",
+    "text": "Highlight Code Cells of a Notebook\nThis is sort of like a toy version of nb2fasthtml’s highly-customizable render_nb that throws away Markdown cells and code cell output:\n\nsource\n\nNotebookToPygmentsFT\n\n NotebookToPygmentsFT (nb, style='rrt')\n\nWarning: This gets only code cells, without their output or any other cells\nTo see what it does, uncomment this:\n\n# show(Div(*NotebookToPygmentsFT(nb)))",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#highlight-each-notebook-cell-randomly",
+    "href": "core.html#highlight-each-notebook-cell-randomly",
+    "title": "core",
+    "section": "Highlight Each Notebook Cell Randomly",
+    "text": "Highlight Each Notebook Cell Randomly\n\nsource\n\nPythonToRandomPygmentsFT\n\n PythonToRandomPygmentsFT (c, print_style=True)\n\n\npft = PythonToRandomPygmentsFT('print(\"Hi Uma\")', print_style=False)\nshow(pft)\n\n\n  \nprint(\"Hi Uma\")\n\n\n\n\n\n\npft = PythonToRandomPygmentsFT('print(\"Hi Uma\")', print_style=True)\nshow(pft)\n\n\nPygments style: autumn  \n    \nprint(\"Hi Uma\")\n\n  \n\n\n\n\n\nsource\n\n\nNotebookToRandomPygmentsFT\n\n NotebookToRandomPygmentsFT (nb)\n\nWarning: This gets only code cells, without their output or any other cells",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#fasthtml-app",
+    "href": "core.html#fasthtml-app",
+    "title": "core",
+    "section": "FastHTML App",
+    "text": "FastHTML App\n\nserver = JupyUvi(app)\n\n\n\n\n\n\nRoutes and Handlers\n\nsource\n\n\nindex\n\n index ()\n\nRandom Pygments style for each cell\n\nsource\n\n\nrandstyle\n\n randstyle ()\n\nRandom Pygments style upon refresh",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#stop-server",
+    "href": "core.html#stop-server",
+    "title": "core",
+    "section": "Stop Server",
+    "text": "Stop Server\n\nif 'server' in globals(): server.stop()",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#export",
+    "href": "core.html#export",
+    "title": "core",
+    "section": "Export",
+    "text": "Export",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "deckthehalls",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation.",
+    "crumbs": [
+      "deckthehalls"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "deckthehalls",
+    "section": "Developer Guide",
+    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall deckthehalls in Development mode\n# make sure deckthehalls package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to deckthehalls\n$ nbdev_prepare",
+    "crumbs": [
+      "deckthehalls"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "deckthehalls",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/audreyfeldroy/deckthehalls.git\nor from conda\n$ conda install -c audreyfeldroy deckthehalls\nor from pypi\n$ pip install deckthehalls\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "deckthehalls"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "deckthehalls",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2",
+    "crumbs": [
+      "deckthehalls"
+    ]
+  }
+]
