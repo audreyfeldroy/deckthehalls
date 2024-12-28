@@ -11,5 +11,7 @@ d = { 'settings': { 'branch': 'main',
                                    'deckthehalls.core.PythonToPygmentsFT': ('core.html#pythontopygmentsft', 'deckthehalls/core.py'),
                                    'deckthehalls.core.PythonToRandomPygmentsFT': ( 'core.html#pythontorandompygmentsft',
                                                                                    'deckthehalls/core.py'),
+                                   'deckthehalls.core.get_code_cells': ('core.html#get_code_cells', 'deckthehalls/core.py'),
                                    'deckthehalls.core.index': ('core.html#index', 'deckthehalls/core.py'),
+                                   'deckthehalls.core.is_code_cell': ('core.html#is_code_cell', 'deckthehalls/core.py'),
                                    'deckthehalls.core.randstyle': ('core.html#randstyle', 'deckthehalls/core.py')}}}
