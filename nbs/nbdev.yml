@@ -1,9 +1,0 @@
-project:
-  output-dir: _docs
-
-website:
-  title: "deckthehalls"
-  site-url: "https://audreyfeldroy.github.io/deckthehalls"
-  description: "A merry FastHTML nbdev project that uses Pygments for Christmas joy"
-  repo-branch: main
-  repo-url: "https://github.com/audreyfeldroy/deckthehalls"
