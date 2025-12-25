@@ -9,41 +9,47 @@ from rich import box
 
 # Festive Python code snippets
 SNIPPETS = [
-    '''x = "Deck the halls with boughs of holly"
-def sing(): return ["Fa"] + ["la"] * 8
-print(" ".join(sing()))''',
+    '''while True:
+    spread_joy()''',
 
-    '''# Tis the season to be jolly
-gifts = ["joy", "peace", "code"]
-for gift in gifts:
-    print(f"Sharing {gift} with you!")''',
+    '''joy, peace, *rest = open("presents")
+# rest is just socks again''',
 
-    '''def spread_cheer(times=3):
-    return "Ho! " * times
+    '''sleigh += [elf.wrap(gift) for gift in gifts]''',
 
-print(spread_cheer())
-# Ho! Ho! Ho!''',
+    '''class Verdict(StrEnum):
+    NAUGHTY = "naughty"
+    NICE = "nice"
 
-    '''wishes = {
-    "joy": float("inf"),
-    "bugs": 0,
-    "hot_cocoa": True,
-}''',
+def check(name: str) -> Verdict:
+    return Verdict.NICE  # it's Christmas''',
 
-    '''from datetime import date
-today = date(2025, 12, 25)
-print(f"Merry Christmas {today.year}!")''',
+    '''await uma.open(presents)  # worth the wait''',
 
-    '''class Holiday:
-    def __init__(self):
-        self.spirit = "bright"
-        self.code = "clean"
-        self.coffee = "warm"''',
+    '''try:
+    work()
+except Holidays:
+    rest()
+finally:
+    eat_cookies()''',
 
-    '''# The best gift
-def open_source():
-    """Share freely, build together"""
-    return "community"''',
+    '''"Fa" + "la" * 8''',
+
+    '''@with_loved_ones
+def celebrate():
+    pass  # just be present''',
+
+    '''class Reindeer:
+    nose = "normal"
+
+class Rudolf(Reindeer):
+    nose = "glowing"''',
+
+    '''if dec_25:
+    raise Spirits''',
+
+    '''class Santa(type):
+    """He knows when you're awake"""''',
 ]
 
 def print_tree(console):
